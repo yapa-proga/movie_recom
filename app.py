@@ -31,7 +31,9 @@ similarity = pickle.load(io.BytesIO(response_sim.content))
 
 movies_url = "https://github.com/yapa-proga/movie_recom/releases/download/v1.1/movies_dict.pkl"
 response_movies = requests.get(movies_url)
-movies_dict = pickle.load(io.BytesIO(response_movies.content))
+movies_dict ="https://github.com/yapa-proga/movie_recom/raw/refs/heads/main/movies_dict.pkl"
+response_movie_dict = requests.get(movies_dict)
+#movies_dict = pickle.load(io.BytesIO(response.content))
 #response_movies = urllib.request.urlopen(movies_url)
 #movies_dict = pickle.load(io.BytesIO(response_movies.read()))
 movies = pd.DataFrame(movies_dict)
