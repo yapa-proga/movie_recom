@@ -2,6 +2,8 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
+import urllib.request
+import io
 
 def fetch_poster(movie_id):
     response=requests.get('https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US'.format(movie_id))
@@ -22,11 +24,15 @@ def recommend(movie):
         recommended_movies_posters.append(fetch_poster(movie_id))
     return recommended_movies, recommended_movies_posters
 
-# Load movies and similarity data
-movies_dict = pickle.load(open('movies_dict.pkl','rb'))
-movies = pd.DataFrame(movies_dict)
+# -------- Load data from GitHub --------
+similarity_url = "https://github.com/yapa-proga/movie_recom/releases/download/v1.1/similarity.pkl"
+response_sim = urllib.request.urlopen(similarity_url)
+similarity = pickle.load(io.BytesIO(response_sim.read()))
 
-similarity = pickle.load(open('similarity.pkl','rb'))
+movies_url = "https://github.com/yapa-proga/movie_recom/releases/download/v1.1/movies_dict.pkl"
+response_movies = urllib.request.urlopen(movies_url)
+movies_dict = pickle.load(io.BytesIO(response_movies.read()))
+movies = pd.DataFrame(movies_dict)
 
 #--------------UI----------
 
