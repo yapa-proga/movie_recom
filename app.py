@@ -26,8 +26,8 @@ def recommend(movie):
 
 # -------- Load data from GitHub --------
 similarity_url = "https://github.com/yapa-proga/movie_recom/releases/download/v1.1/similarity.pkl"
-response_sim = urllib.request.urlopen(similarity_url)
-similarity = pickle.load(io.BytesIO(response_sim.read()))
+response_sim = requests.get(similarity_url)
+similarity = pickle.load(io.BytesIO(response_sim.content))
 
 movies_url = "https://github.com/yapa-proga/movie_recom/releases/download/v1.1/movies_dict.pkl"
 response_movies = urllib.request.urlopen(movies_url)
