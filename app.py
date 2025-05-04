@@ -24,7 +24,7 @@ def recommend(movie):
         recommended_movies_posters.append(fetch_poster(movie_id))
     return recommended_movies, recommended_movies_posters
 
-# --- Load Data ---
+# --- Function to Load Pickle from URL ---
 def load_pickle_from_url(url):
     try:
         response = requests.get(url)
@@ -34,9 +34,9 @@ def load_pickle_from_url(url):
         st.error(f"Failed to load pickle file from {url}\nError: {e}")
         st.stop()
 
-# Use your actual direct download links here:
+# --- Load Your Data ---
 similarity_url = "https://github.com/yapa-proga/movie_recom/releases/download/v1.1/similarity.pkl"
-movies_url = "https://github.com/yapa-proga/movie_recom/releases/download/v1.1/movies_dict.pkl"
+movies_url = "https://github.com/yapa-proga/movie_recom/releases/download/v1.2/movies_dict.pkl"
 
 similarity = load_pickle_from_url(similarity_url)
 movies_dict = load_pickle_from_url(movies_url)
