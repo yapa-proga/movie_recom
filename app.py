@@ -94,7 +94,7 @@ if st.button("Recommend"):
 st.markdown("""
     <hr style="border:1px solid #555;">
     <div style="text-align:center; padding: 10px; font-size: 14px; color: #aaa;">
-        Made with ❤️ with help of some brain 🧠<br>
+        Made with ❤️ with help of some 🧠<br>
         © 2025 Movie Recommender | Built by Yashu
     </div>
 """, unsafe_allow_html=True)
